@@ -1,8 +1,8 @@
+import { UserServiceClient } from "@atreya2011/grpc-client-laughing-brocolli/example_grpc_pb";
+import { AddUserRequest, AddUserResponse } from "@atreya2011/grpc-client-laughing-brocolli/example_pb";
 import { credentials, Metadata } from "@grpc/grpc-js";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { UserServiceClient } from "../proto/example_grpc_pb";
-import { AddUserRequest, User } from "../proto/example_pb";
 
 interface HomeProps {
   userId: string;
@@ -29,10 +29,10 @@ export default function Home({ userId }: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const user = await AddUser();
+  const res = await AddUser();
   return {
     props: {
-      userId: user.getId(),
+      userId: res.user?.id,
     },
   };
 };
@@ -47,7 +47,7 @@ function AddUser() {
     "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSiBTbWl0aCIsImVtYWlsIjoianNtaXRoQGV4YW1wbGUuY29tIiwiaWF0IjoxNjEzMzUwNTAxfQ.g_Ad8T49-PeF0PGWGcYSjlG0Ib3jBHF52bqoMaEXj6td7SlCAJBwtH8UdsFVAX6xT44DQvydOidLI-vgKP9E_Q",
   );
 
-  return new Promise<User>((resolve, reject) =>
-    client.addUser(request, metadata, (err, user) => (err ? reject(err) : resolve(user))),
+  return new Promise<AddUserResponse.AsObject>((resolve, reject) =>
+    client.addUser(request, metadata, (err, user) => (err ? reject(err) : resolve(user.toObject()))),
   );
 }
