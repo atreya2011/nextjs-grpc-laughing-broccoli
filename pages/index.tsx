@@ -1,5 +1,5 @@
-import { UserServiceClient } from "@atreya2011/grpc-client-laughing-brocolli/example_grpc_web_pb";
-import { AddUserRequest } from "@atreya2011/grpc-client-laughing-brocolli/example_pb";
+import { UserServiceClient } from "@atreya2011/grpc-proto-laughing-brocolli/example_grpc_web_pb";
+import { AddUserRequest } from "@atreya2011/grpc-proto-laughing-brocolli/example_pb";
 import Head from "next/head";
 import { useState } from "react";
 

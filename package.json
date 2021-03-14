@@ -13,7 +13,7 @@
     "type-check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "dependencies": {
-    "@atreya2011/grpc-client-laughing-brocolli": "^1.0.9",
+    "@atreya2011/grpc-proto-laughing-brocolli": "^0.1.1",
     "@tailwindcss/forms": "^0.2.1",
     "autoprefixer": "^10.2.5",
     "next": "^10.0.8",
